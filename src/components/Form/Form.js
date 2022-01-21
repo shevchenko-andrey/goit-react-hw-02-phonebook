@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import { nanoid } from 'nanoid';
+
 class Form extends Component {
   static defaultProps = {
     state: {

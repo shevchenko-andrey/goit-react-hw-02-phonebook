@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-// import InputPhone from './InputPhone/';
+
 import toast, { Toaster } from 'react-hot-toast';
+
+import { nanoid } from 'nanoid';
+
+// import PropTypes from 'prop-types';
 import Form from './Form';
 import Section from './Section';
 import Contacts from './Contacts';
 import Filter from './Filter';
-import { nanoid } from 'nanoid';
+
 class App extends Component {
   static defaultProps = {
     state: {
