@@ -4,8 +4,9 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import { nanoid } from 'nanoid';
 
-// import PropTypes from 'prop-types';
-import Form from './Form';
+import { GlobalStyle } from '../Base/BaseStyle';
+
+import ContactForm from './Form';
 import Section from './Section';
 import Contacts from './Contacts';
 import Filter from './Filter';
@@ -33,7 +34,7 @@ class App extends Component {
     );
     this.setState(({ contacts }) => {
       if (isDubled) {
-        toast(`${name} is already in contacts`);
+        toast.error(`${name} is already in contacts`);
         return;
       }
       return {
@@ -65,16 +66,20 @@ class App extends Component {
       return name.toLowerCase().includes(normalizedFilter);
     });
     return (
-      <Section>
-        <Form onSubmit={this.handleSubmitForm} />
-
-        <Filter value={filter} onChange={this.changeFilter} />
-        <Contacts
-          contacts={visibleContacts}
-          onDeleteContact={this.handleDeleteContact}
-        />
+      <>
+        <GlobalStyle />
+        <Section title="PhoneBook">
+          <ContactForm onSubmit={this.handleSubmitForm} />
+        </Section>
+        <Section title="Contacts">
+          <Filter value={filter} onChange={this.changeFilter} />
+          <Contacts
+            contacts={visibleContacts}
+            onDeleteContact={this.handleDeleteContact}
+          />
+        </Section>
         <Toaster />
-      </Section>
+      </>
     );
   }
 }
